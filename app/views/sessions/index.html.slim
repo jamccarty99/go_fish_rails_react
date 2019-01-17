@@ -1,0 +1,10 @@
+.container.flex_column
+  .navigation__container.flex_row
+    = link_to(image_tag("back_arrow.png", alt: "chevron_left icon"), session_path, method: 'delete', class: 'navigation__item navigation__item--back')
+    h1.navigation__title ="Welcome, #{session[:user_name]}!"
+    = link_to(image_tag("settings_icon_small.png", alt: "settings icon"), users_path, method: 'get', class: 'navigation__item navigation__item--settings')
+  .main_menu__container.flex_column
+    = button_to 'Play Game', game_size_path, method: 'get', class: 'menu__buttons'
+    = button_to 'Leaderboard', leaderboard_path, method: 'get', class: 'menu__buttons'
+    = button_to 'How to Play', rule_path, method: 'get', class: 'menu__buttons'
+    = button_to 'Log Out', session_path, method: "delete", class: 'menu__buttons'

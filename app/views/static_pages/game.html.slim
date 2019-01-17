@@ -1,0 +1,23 @@
+.container.flex_column
+  = form_for(:game, url: game_path, method: 'patch') do |f|
+    = link_to(image_tag("settings_icon_small.png", alt: "settings icon"), users_path, method: 'get', class: 'navigation__item')
+    = f.label opponent.name, class: 'flex_row', for: opponent.name
+      .avatar_container
+        = image_tag("blank_avatar.png", alt:("opponent avatar image"))
+        .avatar_name #{opponent.name}
+        .avatar_sets Sets: #{opponent.sets_count}
+      - opponent.send(:hand).each do |card|
+        = image_tag("cards/card_back.png", alt:("back of card image"))
+    = f.radio_button "asked_player", opponent.name, class: "hidden", required: '', id: opponent.name
+    .flex_row.settings__container for="go_fish_draw"
+      = image_tag("deck.png", alt:("deck image"), class: "game__img--deck")
+    .flex_row.settings__container
+      h1.game__message--box #{message}
+    .flex_row.settings__container
+      .avatar_container
+        = image_tag("blank_avatar.png", alt:("self avatar image"))
+        .avatar_name #{current_user.name}
+        .avatar_sets Sets: #{current_user_player.sets_count}
+      - current_user_player.send(:hand).each do |card|
+        = f.submit card.rank, name: "asked_card"
+          = image_tag("cards/#{card.to_s}.png", alt:("#{card.rank} of #{card.suit}"))

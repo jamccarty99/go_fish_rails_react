@@ -1,0 +1,10 @@
+.container.flex_column
+  .navigation__container.flex_row
+    = link_to(image_tag("back_arrow.png", alt: "chevron_left icon"), sessions_path, method: 'delete', class: 'navigation__item navigation__item--back')
+    h1.navigation__title Number of Players
+    = link_to(image_tag("settings_icon_small.png", alt: "settings icon"), users_path, method: 'get', class: 'navigation__item navigation__item--settings')
+  = form_for(:game, url: games_path, html: {class: "main_menu__container flex_column"}) do |f|
+    = f.submit "2 Players", class: "menu__buttons", :name => "game_size"
+    = f.submit "3 Players", class: "menu__buttons", :name => "game_size"
+    = f.submit "4 Players", class: "menu__buttons", :name => "game_size"
+    = f.submit "5 Players", class: "menu__buttons", :name => "game_size"

@@ -1,0 +1,13 @@
+.container.flex_column
+  h1.heading Go Fish!
+  .signin__container
+    h1.signin__title Sign In
+    = form_for(:session, url: sessions_path, html: {class: "signin__form flex_column"}) do |f|
+      = f.label :name, 'Name', class: 'signup__label--username'
+      = f.text_field :name, class: 'form-control signup__input--username', autocomplete: "on", placeholder: "johndoe", maxlength: "13", required: ""
+      = f.label :password
+      = f.password_field :password, class: 'form-control signup__input--password', placeholder: "e.g. •••••••••", required: ''
+      .signin__form.signup__links
+        a.signup__link--newuser href="/users/new" type="button" New user?
+        a.signup__link--forgot href="#" type="button" Forgot password?
+      = f.submit "Log in", class: "signup__button--login"

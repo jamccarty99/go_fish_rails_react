@@ -1,0 +1,6 @@
+- #if @found_game.pending?
+-#  .container.flex_column
+-#    h1.waiting__box Waiting for one more player to join the Game...
+-#    = image_tag("timer_icon.png", alt:("waiting timer icon"))
+-# else
+= react_component('GameView', game: @game.state_for)
